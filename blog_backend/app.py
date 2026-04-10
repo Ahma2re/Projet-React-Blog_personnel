@@ -10,7 +10,12 @@ def create_app(config_name='default'):
     # Extensions
     db.init_app(app)
     jwt.init_app(app)
-    cors.init_app(app, resources={r'/api/*': {'origins': 'http://localhost:5173'}})
+    
+    cors.init_app(app, resources={r'/api/*': {'origins': [
+    'http://localhost:5173',
+    'https://projet-react-blog-personnel-4prz2m5hl-ahmas-projects.vercel.app',
+    'https://projet-react-blog-personnel.vercel.app'
+    ]}})
 
     # Blueprints
     from routes.auth     import auth_bp
